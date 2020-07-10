@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import 'dotenv/config';
+import cors from 'cors';
 
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
@@ -14,6 +15,7 @@ import upload from './config/upload';
 createConnection();
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(upload.folderUpload));
 app.use(routes);
